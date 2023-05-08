@@ -91,6 +91,9 @@ mod mhpmcounterx;
 pub use self::mhpmcounterx::*;
 pub mod minstret;
 pub mod minstreth;
+pub mod mpccr;
+pub mod mpcer;
+pub mod mpcmr;
 
 // Machine Counter Setup
 mod mhpmeventx;
