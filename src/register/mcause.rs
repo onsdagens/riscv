@@ -3,7 +3,7 @@
 /// mcause register
 #[derive(Clone, Copy, Debug)]
 pub struct Mcause {
-    bits: usize,
+    pub bits: usize,
 }
 
 /// Trap Cause
@@ -139,3 +139,22 @@ impl Mcause {
 }
 
 read_csr_as!(Mcause, 0x342);
+write_csr!(0x300);
+set!(0x300);
+clear!(0x300);
+
+#[inline]
+pub unsafe fn write(val: usize) {
+    let bits = val as usize;
+    _write(bits);
+}
+#[inline]
+pub unsafe fn set(val: usize){
+    let bits = val as usize;
+    _set(bits);
+}
+#[inline]
+pub unsafe fn clear(val: usize){
+    let bits = val as usize;
+    _clear(bits);
+}

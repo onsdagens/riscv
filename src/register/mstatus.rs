@@ -12,7 +12,7 @@ use bit_field::BitField;
 /// mstatus register
 #[derive(Clone, Copy, Debug)]
 pub struct Mstatus {
-    bits: usize,
+    pub bits: usize,
 }
 
 /// Additional extension state
@@ -273,4 +273,19 @@ pub unsafe fn set_fs(fs: FS) {
     let mut value = _read();
     value.set_bits(13..15, fs as usize);
     _write(value);
+}
+#[inline]
+pub unsafe fn write(val: usize) {
+    let bits = val as usize;
+    _write(bits);
+}
+#[inline]
+pub unsafe fn set(val: usize){
+    let bits = val as usize;
+    _set(bits);
+}
+#[inline]
+pub unsafe fn clear(val: usize){
+    let bits = val as usize;
+    _clear(bits);
 }
